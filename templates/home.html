@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="color:blue">
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2>Predictive analysis</h2>
+            
+            <h3>Tenure</h3>
+            <input id="first" name="tenure" type="number ">
+            
+            <h3>What is the Monthly Charges?</h3><br><input id="second" name="MonthlyCharges" required="required">
+            
+            <h3>What is the Total Charges?</h3><input id="third" name="TotalCharges" required="required">
+            
+            <h3>Customer Gender</h3><br><select name="gender" id="fuel" required="required">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            
+            <h3>Is the Customer a Senior Citizen?</h3><br><select name="SeniorCitizen" id="fuel" required="required">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            
+            <h3>Is the Customer a Partner?</h3><br><select name="Partner" id="resea" required="required">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            
+            <h3>Does the Customer have Dependents?</h3><br><select name="Dependents" id="research" required="required">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            
+            
+            <h3>Does the Customer have Phone Service?</h3><br><select name="PhoneService" id="research" required="required">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            
+            
+            <h3>Does the Customer have Multiple Lines?</h3><br><select name="MultipleLines" id="research" required="required">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No phone service">No phone service</option>
+            </select>
+            
+            <h3>Does the Customer have Internet Service?</h3><br><select name="InternetService" id="research" required="required">
+                <option value="DSL">DSL</option>
+                <option value="No">No</option>
+                <option value="Fiber optic">Fiber optic</option>
+            </select>
+            
+            
+            <h3>Does the Customer have Online Security?</h3><br><select name="OnlineSecurity" id="research" required="required">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No internet service">No internet service</option>
+            </select>
+            
+            
+            <h3>Does the Customer have Online Backup?</h3><br><select name="OnlineBackup" id="research" required="required">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No internet service">No phone service</option>
+            </select>
+            
+            
+            
+           <h3>Does the Customer have Device Protection?</h3><br><select name="DeviceProtection" id="research" required="required">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No internet service">No phone service</option>
+            </select> 
+            
+            
+            
+            <h3>Does the Customer have Tech Support?</h3><br><select name="TechSupport" id="research" required="required">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No internet service">No phone service</option>
+            </select>
+            
+            
+            
+            <h3>Does the Customer have StreamingTV?</h3><br><select name="StreamingTV" id="research" required="required">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No internet service">No phone service</option>
+            </select>
+            
+            
+            <h3>Does the Customer have Streaming Movies?</h3><br><select name="StreamingMovies" id="research" required="required">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No internet service">No phone service</option>
+            </select>
+            
+            <h3>Category of Customer Contract?</h3><br><select name="Contract" id="research" required="required">
+                <option value="Month-to-month">Month-to-month</option>
+                <option value="Two year">Two year</option>
+                <option value="One year">One year</option>
+            </select>
+            
+            
+            <h3>Does the Customer have Paperless Billing?</h3><br><select name="PaperlessBilling" id="research" required="required">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            
+            
+            <h3>What is the Customer Payment Method?</h3><br><select name="PaymentMethod" id="research" required="required">
+                <option value="Electronic check">Electronic check</option>
+                <option value="Mailed check">Mailed check</option>
+                <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+                <option value="Credit card (automatic)">Credit card (automatic)</option>   
+            </select>
+            
+            
+            
+            
+            
+            
+            <br><br><button id="sub" type="submit ">Will the Customer Churn?</button>
+            <br>
+
+
+
+
+        </form>
+
+
+
+        <br><br><h3>{{ prediction_text1 }} {{ prediction_text2 }} <h3>
+    </div>
+
+
+
+
+    <style>
+        body {
+            background-color: lightslategray;
+            text-align: center;
+            padding: 0px;
+        }
+        
+        #research {
+            font-size: 18px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        #fuel {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #fuel:hover {
+            background-color: coral;
+        }
+        
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: coral;
+        }
+        
+        #resea {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #resea:hover {
+            background-color: coral;
+        }
+        
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #sub:hover {
+            background-color: darkcyan;
+        }
+        
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #second {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #third {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #fourth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</body>
+
+</html>
